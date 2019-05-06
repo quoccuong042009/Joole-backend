@@ -8,9 +8,10 @@ namespace Joole_BackEnd.Core.Domain.ManyToMany
 {
     public class SubCatToTypeProp
     {
-        public int ProductId { get; set; }
+        public int SubCategoryId { get; set; }
         public int TypePropertyId { get; set; }
-        public Product Product { get; set; }
+        public SubCategory SubCategory { get; set; }
         public TypeProperty TypeProperty { get; set; }
+        public int Value { get; set; }
     }
 }

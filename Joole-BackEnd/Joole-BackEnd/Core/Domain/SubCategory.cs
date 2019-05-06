@@ -10,12 +10,12 @@ namespace Joole_BackEnd.Core.Domain
         public int Name { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public ICollection<TypePropVal> TypeProperties { get; set; }
-        public ICollection<TechPropVal> TechProperties { get; set; }
+        public ICollection<SubCatToTypeProp> TypeProperties { get; set; }
+        public ICollection<SubCatToTechProp> TechProperties { get; set; }
         public SubCategory()
         {
-            TypeProperties = new Collection<TypePropVal>();
-            TechProperties = new Collection<TechPropVal>();
+            TypeProperties = new Collection<SubCatToTypeProp>();
+            TechProperties = new Collection<SubCatToTechProp>();
         }
     }
 }
