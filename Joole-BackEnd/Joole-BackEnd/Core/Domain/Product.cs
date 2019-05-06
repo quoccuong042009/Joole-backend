@@ -24,10 +24,5 @@ namespace Joole_BackEnd.Core.Domain
         public ProdDoc ProdDoc { get; set; }
         public int SaleId { get; set; }
         public Sale Sale { get; set; }
-        public ICollection<ProjToProd> Projects { get; set; }
-        public Product()
-        {
-            Projects = new Collection<ProjToProd>();
-        }
     }
 }
