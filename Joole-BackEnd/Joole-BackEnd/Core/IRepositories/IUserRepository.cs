@@ -10,5 +10,6 @@ namespace Joole_BackEnd.Core.IRepositories
 {
     public interface IUserRepository : IRepository<User>
     {
+        //Task<User> GetUserWithUsername(string Username);
     }
 }

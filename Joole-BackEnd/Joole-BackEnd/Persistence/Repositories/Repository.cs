@@ -17,30 +17,24 @@ namespace Joole_BackEnd.Persistence.Repositories
             Context = context;
         }
 
-        public async Task<TEntity> Get(int id)
+        public TEntity Get(int id)
         {
-            return await Context.Set<TEntity>().FindAsync(id);
+            return Context.Set<TEntity>().Find(id);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
-            // Note that here I've repeated Context.Set<TEntity>() in every method and this is causing
-            // too much noise. I could get a reference to the DbSet returned from this method in the 
-            // constructor and store it in a private field like _entities. This way, the implementation
-            // of our methods would be cleaner:
-            // 
-            // _entities.ToList();
-            // _entities.Where();
-            // _entities.SingleOrDefault();
-            // 
-            // I didn't change it because I wanted the code to look like the videos. But feel free to change
-            // this on your own.
-            return await Context.Set<TEntity>().ToListAsync();
+            return Context.Set<TEntity>().ToList();
         }
 
-        public async Task<TEntity> SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return await Context.Set<TEntity>().SingleOrDefaultAsync(predicate);
+            return Context.Set<TEntity>().Where(predicate);
+        }
+
+        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Context.Set<TEntity>().SingleOrDefault(predicate);
         }
 
         public void Add(TEntity entity)
@@ -52,5 +46,7 @@ namespace Joole_BackEnd.Persistence.Repositories
         {
             Context.Set<TEntity>().Remove(entity);
         }
+
+        
     }
 }
