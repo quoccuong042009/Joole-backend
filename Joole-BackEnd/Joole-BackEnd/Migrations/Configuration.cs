@@ -5,14 +5,14 @@ namespace Joole_BackEnd.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Queries.Persistence.JooleContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Joole_BackEnd.Persistence.JooleContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Queries.Persistence.JooleContext context)
+        protected override void Seed(Joole_BackEnd.Persistence.JooleContext context)
         {
             //  This method will be called after migrating to the latest version.
 
