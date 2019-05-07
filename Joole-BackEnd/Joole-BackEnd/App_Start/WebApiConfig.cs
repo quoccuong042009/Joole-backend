@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Joole_BackEnd.Core;
+using Joole_BackEnd.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Unity;
 
 namespace Joole_BackEnd
 {

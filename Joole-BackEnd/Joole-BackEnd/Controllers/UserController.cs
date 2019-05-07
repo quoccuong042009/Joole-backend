@@ -15,11 +15,16 @@ namespace Joole_BackEnd.Controllers
     public class UserController : ApiController
     {
         public IUnitOfWork UnitOfWork { get; }
-        public JooleContext JooleContext { get; }
-        public UserController()
+        //public JooleContext JooleContext { get; }
+        //public UserController()
+        //{
+        //    JooleContext = new JooleContext();
+        //    UnitOfWork = new UnitOfWork(JooleContext);
+        //}
+
+        public UserController(IUnitOfWork unitOfWork)
         {
-            JooleContext = new JooleContext();
-            UnitOfWork = new UnitOfWork(JooleContext);
+            UnitOfWork = unitOfWork;
         }
 
         [HttpGet]
