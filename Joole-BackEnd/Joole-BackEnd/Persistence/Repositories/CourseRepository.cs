@@ -8,7 +8,7 @@
 //{
 //    public class CourseRepository : Repository<Course>, ICourseRepository
 //    {
-//        public CourseRepository(PlutoContext context) 
+//        public CourseRepository(PlutoContext context)
 //            : base(context)
 //        {
 //        }

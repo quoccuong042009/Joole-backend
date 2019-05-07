@@ -1,7 +1,7 @@
 ﻿//using Queries.Core.Domain;
 //using System.Data.Entity.ModelConfiguration;
 
-//namespace Queries.Persistence.EntityConfigurations
+//namespace Joole_BackEnd.Persistence.EntityConfigurations
 //{
 //    public class CourseConfiguration : EntityTypeConfiguration<Course>
 //    {

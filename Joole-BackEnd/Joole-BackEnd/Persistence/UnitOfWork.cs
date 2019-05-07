@@ -1,31 +1,30 @@
-﻿//using Queries.Core;
-//using Queries.Core.Repositories;
-//using Queries.Persistence.Repositories;
+﻿using System.Threading.Tasks;
+using Joole_BackEnd.Core;
+using Joole_BackEnd.Core.IRepositories;
+using Joole_BackEnd.Persistence.Repositories;
 
-//namespace Queries.Persistence
-//{
-//    public class UnitOfWork : IUnitOfWork
-//    {
-//        private readonly PlutoContext _context;
+namespace Joole_BackEnd.Persistence
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly JooleContext _context;
 
-//        public UnitOfWork(PlutoContext context)
-//        {
-//            _context = context;
-//            Courses = new CourseRepository(_context);
-//            Authors = new AuthorRepository(_context);
-//        }
+        public UnitOfWork(JooleContext context)
+        {
+            _context = context;
+            Users = new UserRepository(_context);
+        }
 
-//        public ICourseRepository Courses { get; private set; }
-//        public IAuthorRepository Authors { get; private set; }
+        public IUserRepository Users { get; private set; }
 
-//        public int Complete()
-//        {
-//            return _context.SaveChanges();
-//        }
+        public async Task CompleteAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
 
-//        public void Dispose()
-//        {
-//            _context.Dispose();
-//        }
-//    }
-//}
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
+    }
+}

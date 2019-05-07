@@ -3,7 +3,7 @@ using Joole_BackEnd.Core.Domain.ManyToMany;
 using Joole_BackEnd.Core.Domain.Property;
 using System.Data.Entity;
 
-namespace Queries.Persistence
+namespace Joole_BackEnd.Persistence
 {
     public class JooleContext : DbContext
     {

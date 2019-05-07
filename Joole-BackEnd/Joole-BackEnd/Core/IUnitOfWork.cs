@@ -1,12 +1,12 @@
-//using Queries.Core.Repositories;
-//using System;
+using Joole_BackEnd.Core.IRepositories;
+using System;
+using System.Threading.Tasks;
 
-//namespace Queries.Core
-//{
-//    public interface IUnitOfWork : IDisposable
-//    {
-//        ICourseRepository Courses { get; }
-//        IAuthorRepository Authors { get; }
-//        int Complete();
-//    }
-//}
+namespace Joole_BackEnd.Core
+{
+    public interface IUnitOfWork : IDisposable
+    {
+        IUserRepository Users { get; }
+        Task CompleteAsync();
+    }
+}
