@@ -293,6 +293,10 @@
     <Compile Include="Migrations\201905081616512_UpdateRelationforTechandTypeProp.Designer.cs">
       <DependentUpon>201905081616512_UpdateRelationforTechandTypeProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905081713256_UpdateProductRemoveModelYear.cs" />
+    <Compile Include="Migrations\201905081713256_UpdateProductRemoveModelYear.Designer.cs">
+      <DependentUpon>201905081713256_UpdateProductRemoveModelYear.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordHelper\SecurePasswordHasher.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -439,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905081616512_UpdateRelationforTechandTypeProp.resx">
       <DependentUpon>201905081616512_UpdateRelationforTechandTypeProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081713256_UpdateProductRemoveModelYear.resx">
+      <DependentUpon>201905081713256_UpdateProductRemoveModelYear.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
