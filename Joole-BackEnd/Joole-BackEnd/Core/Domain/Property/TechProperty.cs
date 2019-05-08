@@ -8,6 +8,6 @@ namespace Joole_BackEnd.Core.Domain.Property
     public class TechProperty
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }

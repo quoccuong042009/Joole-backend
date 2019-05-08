@@ -6,11 +6,13 @@ using System.Web;
 
 namespace Joole_BackEnd.Core.Domain.ManyToMany
 {
-    public class SubCatToTechProp
+    public class TechPropToProd
     {
-        public int SubCategoryId { get; set; }
         public int TechPropertyId { get; set; }
-        public SubCategory SubCategory { get; set; }
+        public int ProductId { get; set; }
         public TechProperty TechProperty { get; set; }
+        public Product Product { get; set; }
+        public double MinValue { get; set; }
+        public double MaxValue { get; set; }
     }
 }

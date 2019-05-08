@@ -9,10 +9,19 @@ namespace Joole_BackEnd.Persistence
     {
         private readonly JooleContext _context;
         public IUserRepository Users { get; private set; }
+        public ICategoryRepository Categories { get; private set; }
+
+        public ISubCategoryRepository SubCategories { get; private set; }
+
+        public IProductRepository Products { get; private set; }
+
         public UnitOfWork(JooleContext context)
         {
             _context = context;
             Users = new UserRepository(_context);
+            Categories = new CategoryRepository(_context);
+            SubCategories = new SubCategoryRepository(_context);
+            Products = new ProductRepository(_context);
         }
 
         public async Task CompleteAsync()

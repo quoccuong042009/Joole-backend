@@ -211,24 +211,28 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\Dto\UserRegisterDto.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\Domain\Category.cs" />
     <Compile Include="Core\Domain\Department.cs" />
     <Compile Include="Core\Domain\Manufacturer.cs" />
     <Compile Include="Core\Domain\ManyToMany\SubCatToTechProp.cs" />
     <Compile Include="Core\Domain\ManyToMany\SubCatToTypeProp.cs" />
+    <Compile Include="Core\Domain\ManyToMany\TechPropToProd.cs" />
+    <Compile Include="Core\Domain\ManyToMany\TypePropToProd.cs" />
     <Compile Include="Core\Domain\ProdDoc.cs" />
     <Compile Include="Core\Domain\Product.cs" />
     <Compile Include="Core\Domain\Property\TechProperty.cs" />
     <Compile Include="Core\Domain\Property\TypeProperty.cs" />
-    <Compile Include="Core\Domain\Role.cs" />
     <Compile Include="Core\Domain\Sale.cs" />
     <Compile Include="Core\Domain\Series.cs" />
     <Compile Include="Core\Domain\SubCategory.cs" />
     <Compile Include="Core\Domain\User.cs" />
+    <Compile Include="Core\IRepositories\ICategoryRepository.cs" />
+    <Compile Include="Core\IRepositories\IProductRepository.cs" />
+    <Compile Include="Core\IRepositories\ISubCategoryRepository.cs" />
     <Compile Include="Core\IRepositories\IUserRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\IRepositories\IAuthorRepository.cs" />
@@ -240,6 +244,54 @@
     <Compile Include="Migrations\201905080133011_ChangeintNametoStringInSubCategory.cs" />
     <Compile Include="Migrations\201905080133011_ChangeintNametoStringInSubCategory.Designer.cs">
       <DependentUpon>201905080133011_ChangeintNametoStringInSubCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081423030_UpdateManufacturerNametoString.cs" />
+    <Compile Include="Migrations\201905081423030_UpdateManufacturerNametoString.Designer.cs">
+      <DependentUpon>201905081423030_UpdateManufacturerNametoString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081425019_UpdateManufactureDeleteUserIdFK.cs" />
+    <Compile Include="Migrations\201905081425019_UpdateManufactureDeleteUserIdFK.Designer.cs">
+      <DependentUpon>201905081425019_UpdateManufactureDeleteUserIdFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081428170_UpdateSeriesTableAddStringName.cs" />
+    <Compile Include="Migrations\201905081428170_UpdateSeriesTableAddStringName.Designer.cs">
+      <DependentUpon>201905081428170_UpdateSeriesTableAddStringName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081434442_UpdateSeriesAddFKToManufacturer.cs" />
+    <Compile Include="Migrations\201905081434442_UpdateSeriesAddFKToManufacturer.Designer.cs">
+      <DependentUpon>201905081434442_UpdateSeriesAddFKToManufacturer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081441372_UpdateSeriesAddFKToManufacturer1.cs" />
+    <Compile Include="Migrations\201905081441372_UpdateSeriesAddFKToManufacturer1.Designer.cs">
+      <DependentUpon>201905081441372_UpdateSeriesAddFKToManufacturer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081451179_UpdateProductDeleteNameCol.cs" />
+    <Compile Include="Migrations\201905081451179_UpdateProductDeleteNameCol.Designer.cs">
+      <DependentUpon>201905081451179_UpdateProductDeleteNameCol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081504131_UpdateDroptableRoleUpdateUserFKtoROle.cs" />
+    <Compile Include="Migrations\201905081504131_UpdateDroptableRoleUpdateUserFKtoROle.Designer.cs">
+      <DependentUpon>201905081504131_UpdateDroptableRoleUpdateUserFKtoROle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081542019_UpdatePropertyNametoString.cs" />
+    <Compile Include="Migrations\201905081542019_UpdatePropertyNametoString.Designer.cs">
+      <DependentUpon>201905081542019_UpdatePropertyNametoString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081547388_UpdatePorpertyTypeValueToString.cs" />
+    <Compile Include="Migrations\201905081547388_UpdatePorpertyTypeValueToString.Designer.cs">
+      <DependentUpon>201905081547388_UpdatePorpertyTypeValueToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081548014_UpdateProductModelYearToString.cs" />
+    <Compile Include="Migrations\201905081548014_UpdateProductModelYearToString.Designer.cs">
+      <DependentUpon>201905081548014_UpdateProductModelYearToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081551325_UpdateTechValueToDouble.cs" />
+    <Compile Include="Migrations\201905081551325_UpdateTechValueToDouble.Designer.cs">
+      <DependentUpon>201905081551325_UpdateTechValueToDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081616512_UpdateRelationforTechandTypeProp.cs" />
+    <Compile Include="Migrations\201905081616512_UpdateRelationforTechandTypeProp.Designer.cs">
+      <DependentUpon>201905081616512_UpdateRelationforTechandTypeProp.cs</DependentUpon>
     </Compile>
     <Compile Include="PasswordHelper\SecurePasswordHasher.cs" />
     <Compile Include="Global.asax.cs">
@@ -254,8 +306,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\EntityConfigurations\CourseConfiguration.cs" />
     <Compile Include="Persistence\JooleContext.cs" />
+    <Compile Include="Persistence\Repositories\CategoryRepository.cs" />
     <Compile Include="Persistence\Repositories\CourseRepository.cs" />
+    <Compile Include="Persistence\Repositories\ProductRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\Repositories\SubCategoryRepository.cs" />
     <Compile Include="Persistence\Repositories\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -307,7 +362,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
@@ -349,6 +403,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905080133011_ChangeintNametoStringInSubCategory.resx">
       <DependentUpon>201905080133011_ChangeintNametoStringInSubCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081423030_UpdateManufacturerNametoString.resx">
+      <DependentUpon>201905081423030_UpdateManufacturerNametoString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081425019_UpdateManufactureDeleteUserIdFK.resx">
+      <DependentUpon>201905081425019_UpdateManufactureDeleteUserIdFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081428170_UpdateSeriesTableAddStringName.resx">
+      <DependentUpon>201905081428170_UpdateSeriesTableAddStringName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081434442_UpdateSeriesAddFKToManufacturer.resx">
+      <DependentUpon>201905081434442_UpdateSeriesAddFKToManufacturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081441372_UpdateSeriesAddFKToManufacturer1.resx">
+      <DependentUpon>201905081441372_UpdateSeriesAddFKToManufacturer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081451179_UpdateProductDeleteNameCol.resx">
+      <DependentUpon>201905081451179_UpdateProductDeleteNameCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081504131_UpdateDroptableRoleUpdateUserFKtoROle.resx">
+      <DependentUpon>201905081504131_UpdateDroptableRoleUpdateUserFKtoROle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081542019_UpdatePropertyNametoString.resx">
+      <DependentUpon>201905081542019_UpdatePropertyNametoString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081547388_UpdatePorpertyTypeValueToString.resx">
+      <DependentUpon>201905081547388_UpdatePorpertyTypeValueToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081548014_UpdateProductModelYearToString.resx">
+      <DependentUpon>201905081548014_UpdateProductModelYearToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081551325_UpdateTechValueToDouble.resx">
+      <DependentUpon>201905081551325_UpdateTechValueToDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081616512_UpdateRelationforTechandTypeProp.resx">
+      <DependentUpon>201905081616512_UpdateRelationforTechandTypeProp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

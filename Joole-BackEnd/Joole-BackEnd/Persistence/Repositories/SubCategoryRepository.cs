@@ -3,15 +3,13 @@ using Joole_BackEnd.Core.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace Joole_BackEnd.Persistence.Repositories
 {
-    public class UserRepository : Repository<User>, IUserRepository
-    {   
-
-        public UserRepository(JooleContext context): base(context)
+    public class SubCategoryRepository : Repository<SubCategory>, ISubCategoryRepository
+    {
+        public SubCategoryRepository(JooleContext context) : base(context)
         {
         }
 
@@ -20,9 +18,9 @@ namespace Joole_BackEnd.Persistence.Repositories
             get { return Context as JooleContext; }
         }
 
-        public User GetUserWithUsername(string Username)
+        public IEnumerable<SubCategory> GetSubCategoriesByCategoryId(int id)
         {
-            return JooleContext.Users.SingleOrDefault(u => u.Username == Username);
+            return JooleContext.SubCategories.Where(sc => sc.CategoryId == id).ToList();
         }
     }
 }

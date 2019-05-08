@@ -10,10 +10,9 @@ namespace Joole_BackEnd.Core.Domain
     public class Product
     {
         public int Id { get; set; }
-        public string Name { get; set; }
         public string Image { get; set; }
         public string Model { get; set; }
-        public int ModelYear { get; set; }
+        public string ModelYear { get; set; }
         public int SubCategoryId { get; set; }
         public SubCategory SubCategory { get; set; }
         public int ManufacturerId { get; set; }

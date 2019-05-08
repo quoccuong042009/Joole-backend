@@ -40,7 +40,7 @@ namespace Joole_BackEnd.Controllers
             var user = Mapper.Map<UserRegisterDto, User>(userRegisterDto);
 
             //Check If Username existed
-            User tempUser = UnitOfWork.Users.SingleOrDefault(u => u.Username == user.Username);
+            User tempUser = UnitOfWork.Users.GetUserWithUsername(user.Username);
             if (tempUser != null)
                 return Request.CreateResponse(HttpStatusCode.Forbidden, "Username Has Already Existed");
 
@@ -59,7 +59,7 @@ namespace Joole_BackEnd.Controllers
             if (!ModelState.IsValid)
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
 
-            User tempUser = UnitOfWork.Users.SingleOrDefault(u => u.Username == user.Username);
+            User tempUser = UnitOfWork.Users.GetUserWithUsername(user.Username);
 
             if (tempUser == null)
             {
