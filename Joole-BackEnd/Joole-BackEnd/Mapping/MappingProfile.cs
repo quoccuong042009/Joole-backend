@@ -20,10 +20,10 @@ namespace Joole_BackEnd.Mapping
         public MappingProfile()
         {
             // Domain -> Dto
-            CreateMap<User, UserLoginDto>();
+            CreateMap<User, UserRegisterDto>();
 
             // Dto -> Domain
-            CreateMap<UserLoginDto, User>();
+            CreateMap<UserRegisterDto, User>();
         }
     }
 }

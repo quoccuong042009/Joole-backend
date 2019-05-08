@@ -2,55 +2,76 @@
 using Joole_BackEnd.Controllers.Dto;
 using Joole_BackEnd.Core;
 using Joole_BackEnd.Core.Domain;
-using Joole_BackEnd.Persistence;
-using System;
+using Joole_BackEnd.Filter;
+using Joole_BackEnd.Jwt;
+using Joole_BackEnd.PasswordHelper;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Joole_BackEnd.Controllers
 {
-    [Route("api/users")]
+    [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
         public IUnitOfWork UnitOfWork { get; }
-
         public UserController(IUnitOfWork unitOfWork)
         {
             UnitOfWork = unitOfWork;
         }
 
+        [JwtAuthentication]
+        [Route("")]
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
             return UnitOfWork.Users.GetAll();
         }
 
+        [AllowAnonymous]
+        [Route("register")]
         [HttpPost]
-        public HttpResponseMessage Login(User User)
+        public HttpResponseMessage Register(UserRegisterDto userRegisterDto)
         {
-            User tempUser = UnitOfWork.Users.SingleOrDefault(u => u.Username == User.Username);
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
 
-            if(tempUser != null)
+            var user = Mapper.Map<UserRegisterDto, User>(userRegisterDto);
+
+            //Check If Username existed
+            User tempUser = UnitOfWork.Users.SingleOrDefault(u => u.Username == user.Username);
+            if (tempUser != null)
+                return Request.CreateResponse(HttpStatusCode.Forbidden, "Username Has Already Existed");
+
+            user.Password = SecurePasswordHasher.Hash(user.Password);
+            UnitOfWork.Users.Add(user);
+            UnitOfWork.CompleteAsync();
+
+            return Request.CreateResponse(HttpStatusCode.OK, "Created");
+        }
+
+        [AllowAnonymous]
+        [Route("login")]
+        [HttpPost]
+        public HttpResponseMessage Login(User user)
+        {
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+
+            User tempUser = UnitOfWork.Users.SingleOrDefault(u => u.Username == user.Username);
+
+            if (tempUser == null)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, "Good");
+                return Request.CreateResponse(HttpStatusCode.NotFound, "The User Was Not Found.");
             }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound, "NotGood");
-            }
-            //if (u == null)
-            //    return Request.CreateResponse(HttpStatusCode.NotFound, "The user was not found.");
 
-            //bool credentials = u.Password.Equals(user.Password);
+            bool credentials = SecurePasswordHasher.Verify(user.Password, tempUser.Password);
 
-            //if (!credentials) return Request.CreateResponse(HttpStatusCode.Forbidden,
-            //    "The username/password combination was wrong.");
+            if (!credentials)
+                return Request.CreateResponse(HttpStatusCode.Forbidden,"The username/password combination was wrong.");
 
-            //return Request.CreateResponse(HttpStatusCode.OK, TokenManager.GenerateToken(user.Username));
+            return Request.CreateResponse(HttpStatusCode.OK, JwtManager.GenerateToken(tempUser.Username));
         }
     }
 }
