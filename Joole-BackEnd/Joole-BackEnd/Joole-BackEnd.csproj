@@ -237,6 +237,10 @@
     <Compile Include="Filter\AuthenticationFailureResult.cs" />
     <Compile Include="Filter\HttpAuthenticationChallengeContextExtensions.cs" />
     <Compile Include="Filter\JwtAuthenticationAttribute.cs" />
+    <Compile Include="Migrations\201905080133011_ChangeintNametoStringInSubCategory.cs" />
+    <Compile Include="Migrations\201905080133011_ChangeintNametoStringInSubCategory.Designer.cs">
+      <DependentUpon>201905080133011_ChangeintNametoStringInSubCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordHelper\SecurePasswordHasher.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -342,6 +346,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905061952055_InitDatabase.resx">
       <DependentUpon>201905061952055_InitDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905080133011_ChangeintNametoStringInSubCategory.resx">
+      <DependentUpon>201905080133011_ChangeintNametoStringInSubCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
