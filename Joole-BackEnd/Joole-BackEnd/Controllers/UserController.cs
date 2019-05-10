@@ -9,9 +9,11 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Joole_BackEnd.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
@@ -22,11 +24,11 @@ namespace Joole_BackEnd.Controllers
         }
 
         [JwtAuthentication]
-        [Route("")]
+        [Route("username/{username}")]
         [HttpGet]
-        public IEnumerable<User> GetUsers()
+        public User GetUserByUsername(string username)
         {
-            return UnitOfWork.Users.GetAll();
+            return UnitOfWork.Users.GetUserWithUsername(username);
         }
 
         [AllowAnonymous]

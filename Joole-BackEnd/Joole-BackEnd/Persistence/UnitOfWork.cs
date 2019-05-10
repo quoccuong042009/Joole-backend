@@ -15,6 +15,10 @@ namespace Joole_BackEnd.Persistence
 
         public IProductRepository Products { get; private set; }
 
+        public ITechPropRepository TechProps { get; private set; }
+
+        public ITypePropRepository TypeProps { get; private set; }
+
         public UnitOfWork(JooleContext context)
         {
             _context = context;
@@ -22,6 +26,8 @@ namespace Joole_BackEnd.Persistence
             Categories = new CategoryRepository(_context);
             SubCategories = new SubCategoryRepository(_context);
             Products = new ProductRepository(_context);
+            TechProps = new TechPropRepository(_context);
+            TypeProps = new TypePropRepository(_context);
         }
 
         public async Task CompleteAsync()

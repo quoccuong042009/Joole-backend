@@ -10,6 +10,8 @@ namespace Joole_BackEnd.Core
         ICategoryRepository Categories { get; }
         ISubCategoryRepository SubCategories { get; }
         IProductRepository Products { get; }
+        ITechPropRepository TechProps { get; }
+        ITypePropRepository TypeProps { get; }
         Task CompleteAsync();
     }
 }
