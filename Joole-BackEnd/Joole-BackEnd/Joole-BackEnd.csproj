@@ -218,10 +218,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\Dto\FilterReceiveDto.cs" />
+    <Compile Include="Controllers\Dto\FilterSendDto.cs" />
     <Compile Include="Controllers\Dto\TechPropsMinMaxValueDto.cs" />
     <Compile Include="Controllers\Dto\TypePropsListValuesDto.cs" />
     <Compile Include="Controllers\Dto\TypePropsStringValueDto.cs" />
     <Compile Include="Controllers\Dto\UserRegisterDto.cs" />
+    <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\TechPropController.cs" />
     <Compile Include="Controllers\TypePropController.cs" />
@@ -242,6 +245,7 @@
     <Compile Include="Core\Domain\SubCategory.cs" />
     <Compile Include="Core\Domain\User.cs" />
     <Compile Include="Core\IRepositories\ICategoryRepository.cs" />
+    <Compile Include="Core\IRepositories\IManufacturerRepository.cs" />
     <Compile Include="Core\IRepositories\IProductRepository.cs" />
     <Compile Include="Core\IRepositories\ISubCategoryRepository.cs" />
     <Compile Include="Core\IRepositories\ITechPropRepository.cs" />
@@ -325,6 +329,7 @@
     <Compile Include="Persistence\JooleContext.cs" />
     <Compile Include="Persistence\Repositories\CategoryRepository.cs" />
     <Compile Include="Persistence\Repositories\CourseRepository.cs" />
+    <Compile Include="Persistence\Repositories\ManufacturerRepository.cs" />
     <Compile Include="Persistence\Repositories\ProductRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\Repositories\SubCategoryRepository.cs" />

@@ -22,14 +22,10 @@ namespace Joole_BackEnd.Persistence.Repositories
 
         public IEnumerable<TypePropsListValuesDto> GetTypePropsAndListValuesWithSubCategoryId(int id)
         {
-            List<TypePropsListValuesDto> res = new List<TypePropsListValuesDto>();
             SqlParameter param1 = new SqlParameter("@SubCategoryId", id.ToString());
             List<TypePropsStringValueDto> objects = JooleContext.Database.SqlQuery<TypePropsStringValueDto>("TypePropWithListValueBySubCatId @SubCategoryId", param1).ToList();
-            foreach(TypePropsStringValueDto o in objects)
-            {
-                TypePropsListValuesDto temp = new TypePropsListValuesDto(o.Id, o.Name, o.StringValues);
-                res.Add(temp);
-            }
+
+            var res = AutoMapper.Mapper.Map<List<TypePropsStringValueDto>, List<TypePropsListValuesDto>>(objects);
 
             return res;
         }

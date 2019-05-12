@@ -24,6 +24,10 @@ namespace Joole_BackEnd.Mapping
 
             // Dto -> Domain
             CreateMap<UserRegisterDto, User>();
+
+            // Dto -> Dto
+            CreateMap<TypePropsStringValueDto, TypePropsListValuesDto>()
+                .ForMember(s => s.ListValues, opt => opt.MapFrom(f => f.StringValues.Split('_').Distinct()));
         }
     }
 }

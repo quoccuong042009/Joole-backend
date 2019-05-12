@@ -20,7 +20,7 @@ namespace Joole_BackEnd.Controllers
         {
             UnitOfWork = unitOfWork;
         }
-
+        
         [Route("listvalues/subcategory/{id}")]
         [HttpGet]
         public IEnumerable<TypePropsListValuesDto> GetTypePropsAndListValuesWithSubCategoryId(int id)

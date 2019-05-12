@@ -12,6 +12,7 @@ namespace Joole_BackEnd.Core
         IProductRepository Products { get; }
         ITechPropRepository TechProps { get; }
         ITypePropRepository TypeProps { get; }
+        IManufacturerRepository Manufacturers { get; }
         Task CompleteAsync();
     }
 }

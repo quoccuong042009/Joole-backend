@@ -19,6 +19,8 @@ namespace Joole_BackEnd.Persistence
 
         public ITypePropRepository TypeProps { get; private set; }
 
+        public IManufacturerRepository Manufacturers { get; private set; }
+
         public UnitOfWork(JooleContext context)
         {
             _context = context;
@@ -28,6 +30,7 @@ namespace Joole_BackEnd.Persistence
             Products = new ProductRepository(_context);
             TechProps = new TechPropRepository(_context);
             TypeProps = new TypePropRepository(_context);
+            Manufacturers = new ManufacturerRepository(_context);
         }
 
         public async Task CompleteAsync()
