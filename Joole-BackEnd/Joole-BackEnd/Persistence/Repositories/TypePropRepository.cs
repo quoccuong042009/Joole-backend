@@ -27,6 +27,16 @@ namespace Joole_BackEnd.Persistence.Repositories
 
             var res = AutoMapper.Mapper.Map<List<TypePropsStringValueDto>, List<TypePropsListValuesDto>>(objects);
 
+            foreach(TypePropsListValuesDto r in res)
+            {
+                if(r.Name == "Model Year")
+                {
+                    List<int> intYears = r.ListValues.Select(int.Parse).ToList();
+                    intYears.Sort();
+                    r.ListValues = new List<string>() { intYears[0].ToString(), intYears[intYears.Count - 1].ToString() };
+                }
+            }
+
             return res;
         }
     }

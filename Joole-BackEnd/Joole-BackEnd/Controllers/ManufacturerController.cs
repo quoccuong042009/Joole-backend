@@ -13,21 +13,21 @@ namespace Joole_BackEnd.Controllers
 {
     [JwtAuthentication]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    //[JwtAuthentication]
-    [RoutePrefix("api/categories")]
-    public class CategoryController : ApiController
+    //[AllowAnonymous]
+    [RoutePrefix("api/manufacturer")]
+    public class ManufacturerController : ApiController
     {
         public IUnitOfWork UnitOfWork { get; }
-        public CategoryController(IUnitOfWork unitOfWork)
+        public ManufacturerController(IUnitOfWork unitOfWork)
         {
             UnitOfWork = unitOfWork;
         }
 
-        [Route("")]
+        [Route("subcategory/{id}")]
         [HttpGet]
-        public IEnumerable<Category> GetCategories()
+        public IEnumerable<Manufacturer> GetManufacturerBySubCategoryId(int id)
         {
-            return UnitOfWork.Categories.GetAll();
+            return this.UnitOfWork.Manufacturers.GetManufacturersBySubCategoryId(id);
         }
     }
 }
